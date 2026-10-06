@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RadioPub — Faites entendre votre entreprise</title>
+
+<style>
+:root{
+    --green:#198754;
+    --green-dark:#11663e;
+    --green-light:#eaf7f0;
+    --yellow:#f6c343;
+    --dark:#17231d;
+    --gray:#66736c;
+    --light:#f7f9f8;
+    --white:#ffffff;
+    --border:#e4e9e6;
+    --shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--dark);
+    background:#fff;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+}
+
+.navbar{
+    min-height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:23px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--green);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    color:#46524c;
+}
+
+.nav-links a:hover{
+    color:var(--green);
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 20px;
+    border-radius:9px;
+    font-weight:700;
+    font-size:14px;
+    border:none;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn-outline{
+    border:1px solid var(--green);
+    color:var(--green);
+    background:white;
+}
+
+.btn-primary{
+    background:var(--green);
+    color:#fff;
+}
+
+.btn-yellow{
+    background:var(--yellow);
+    color:#1c1c1c;
+}
+
+.menu{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:
+        radial-gradient(circle at 85% 20%, rgba(246,195,67,.18), transparent 25%),
+        linear-gradient(135deg,#f2faf5 0%,#ffffff 65%);
+    padding:85px 0 75px;
+    overflow:hidden;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:70px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--green-light);
+    color:var(--green-dark);
+    padding:8px 13px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(40px,5vw,64px);
+    line-height:1.08;
+    letter-spacing:-2px;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    color:var(--gray);
+    font-size:18px;
+    max-width:620px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-note{
+    display:flex;
+    gap:25px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.note-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:#58635e;
+}
+
+.check{
+    width:20px;
+    height:20px;
+    background:var(--green-light);
+    color:var(--green);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+/* =========================
+   HERO VISUAL
+========================= */
+
+.network-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    position:relative;
+}
+
+.network-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.network-title{
+    font-weight:800;
+    font-size:17px;
+}
+
+.live{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:var(--green);
+    font-size:12px;
+    font-weight:700;
+}
+
+.live-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+}
+
+.city-map{
+    height:300px;
+    border-radius:18px;
+    background:
+        linear-gradient(35deg,transparent 45%,#dfe8e3 46%,#dfe8e3 47%,transparent 48%),
+        linear-gradient(120deg,transparent 47%,#dfe8e3 48%,#dfe8e3 49%,transparent 50%),
+        #f5f8f6;
+    position:relative;
+    overflow:hidden;
+}
+
+.city-map:before{
+    content:"";
+    position:absolute;
+    width:85%;
+    height:2px;
+    background:#d7e0da;
+    transform:rotate(20deg);
+    top:45%;
+    left:5%;
+    box-shadow:
+        40px 55px 0 #d7e0da,
+        130px -30px 0 #d7e0da,
+        230px 70px 0 #d7e0da;
+}
+
+.radio-pin{
+    position:absolute;
+    width:48px;
+    height:48px;
+    background:var(--green);
+    color:white;
+    border:5px solid white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+    font-size:18px;
+}
+
+.pin1{top:50px;left:80px;}
+.pin2{top:125px;right:90px;}
+.pin3{bottom:45px;left:170px;}
+.pin4{bottom:75px;right:190px;}
+
+.network-footer{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.network-stat{
+    background:var(--light);
+    border-radius:12px;
+    padding:13px;
+    text-align:center;
+}
+
+.network-stat strong{
+    display:block;
+    font-size:20px;
+    color:var(--green);
+}
+
+.network-stat small{
+    color:var(--gray);
+    font-size:11px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    padding:35px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    color:var(--green);
+}
+
+.stat span{
+    color:var(--gray);
+    font-size:13px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:85px 0;
+}
+
+.section-head{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 45px;
+}
+
+.section-head .label{
+    color:var(--green);
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:10px;
+}
+
+.section-head h2{
+    font-size:38px;
+    line-height:1.15;
+    margin-bottom:15px;
+}
+
+.section-head p{
+    color:var(--gray);
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    background:#fff;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.service{
+    border:1px solid var(--border);
+    padding:28px;
+    border-radius:18px;
+    transition:.25s ease;
+}
+
+.service:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+}
+
+.service-icon{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    background:var(--green-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--green);
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.service h3{
+    margin-bottom:10px;
+}
+
+.service p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how{
+    background:var(--light);
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.step{
+    background:white;
+    padding:25px;
+    border-radius:17px;
+    border:1px solid var(--border);
+}
+
+.step-number{
+    width:38px;
+    height:38px;
+    background:var(--green);
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.step h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.step p{
+    color:var(--gray);
+    font-size:13px;
+}
+
+/* =========================
+   CAMPAIGN
+========================= */
+
+.campaign{
+    background:white;
+}
+
+.campaign-box{
+    background:var(--green);
+    color:white;
+    border-radius:25px;
+    padding:50px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:30px;
+}
+
+.campaign-box h2{
+    font-size:36px;
+    line-height:1.15;
+    margin-bottom:12px;
+}
+
+.campaign-box p{
+    opacity:.88;
+    max-width:650px;
+}
+
+.campaign-box .btn{
+    white-space:nowrap;
+}
+
+/* =========================
+   WHY
+========================= */
+
+.why-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.why-list{
+    display:grid;
+    gap:18px;
+}
+
+.why-item{
+    display:flex;
+    gap:15px;
+}
+
+.why-icon{
+    flex-shrink:0;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--green-light);
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.why-item h3{
+    font-size:17px;
+    margin-bottom:4px;
+}
+
+.why-item p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+.visual-box{
+    background:#f2faf5;
+    border-radius:25px;
+    padding:35px;
+}
+
+.broadcast{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+    margin-bottom:13px;
+}
+
+.broadcast-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.broadcast-name{
+    font-weight:800;
+}
+
+.status{
+    background:var(--green-light);
+    color:var(--green);
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.progress{
+    height:8px;
+    background:#e8ece9;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    background:var(--green);
+    width:68%;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.final-cta{
+    background:#f8faf9;
+    text-align:center;
+}
+
+.final-cta h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.final-cta p{
+    color:var(--gray);
+    margin-bottom:25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#14231b;
+    color:white;
+    padding:55px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    font-size:23px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.footer-logo span{
+    color:var(--yellow);
+}
+
+.footer-description{
+    color:#b8c5be;
+    font-size:14px;
+    max-width:350px;
+}
+
+.footer-column h4{
+    margin-bottom:15px;
+}
+
+.footer-column a{
+    display:block;
+    color:#b8c5be;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.copyright{
+    border-top:1px solid rgba(255,255,255,.1);
+    margin-top:40px;
+    padding-top:20px;
+    color:#9eaaa4;
+    font-size:12px;
+    text-align:center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-actions{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero-grid,
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:60px 0;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .service-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .campaign-box{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:60px 0;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .stats-grid,
+    .service-grid,
+    .steps,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .campaign-box{
+        padding:30px;
+    }
+
+    .campaign-box h2{
+        font-size:28px;
+    }
+
+    .section-head h2{
+        font-size:30px;
+    }
+
+    .network-footer{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="container navbar">
+
+    <a href="#" class="logo">
+        <div class="logo-icon">◉</div>
+        Radio<span>Pub</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="#radios">Nos radios</a>
+        <a href="#services">Services</a>
+        <a href="#fonctionnement">Comment ça marche</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+        <a href="connexion.html" class="btn btn-outline">
+            Se connecter
+        </a>
+
+        <a href="creer-campagne.html" class="btn btn-primary">
+            Créer une campagne
+        </a>
+    </div>
+
+    <div class="menu">☰</div>
+
+</div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+    <div>
+
+        <div class="badge">
+            ● Publicité locale et ciblée
+        </div>
+
+        <h1>
+            Faites entendre
+            <span>votre entreprise</span>
+            là où vos clients passent.
+        </h1>
+
+        <p>
+            Diffusez votre publicité sur notre réseau de radios
+            installées dans les rues et les espaces publics.
+            Choisissez vos zones, vos radios et la durée de votre campagne.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="creer-campagne.html"
+               class="btn btn-primary">
+                Créer ma campagne →
+            </a>
+
+            <a href="#radios"
+               class="btn btn-outline">
+                Découvrir les radios
+            </a>
+
+        </div>
+
+        <div class="hero-note">
+
+            <div class="note-item">
+                <div class="check">✓</div>
+                Choisissez vos radios
+            </div>
+
+            <div class="note-item">
+                <div class="check">✓</div>
+                Suivez votre campagne
+            </div>
+
+            <div class="note-item">
+                <div class="check">✓</div>
+                Statistiques disponibles
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- VISUEL GENERIQUE -->
+    <div>
+
+        <div class="network-card">
+
+            <div class="network-header">
+
+                <div class="network-title">
+                    Notre réseau de diffusion
+                </div>
+
+                <div class="live">
+                    <span class="live-dot"></span>
+                    Réseau actif
+                </div>
+
+            </div>
+
+            <div class="city-map">
+
+                <div class="radio-pin pin1">📻</div>
+                <div class="radio-pin pin2">📻</div>
+                <div class="radio-pin pin3">📻</div>
+                <div class="radio-pin pin4">📻</div>
+
+            </div>
+
+            <div class="network-footer">
+
+                <div class="network-stat">
+                    <strong>--</strong>
+                    <small>Radios</small>
+                </div>
+
+                <div class="network-stat">
+                    <strong>--</strong>
+                    <small>Zones</small>
+                </div>
+
+                <div class="network-stat">
+                    <strong>--</strong>
+                    <small>Campagnes</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+<div class="container stats-grid">
+
+    <div class="stat">
+        <strong>24/7</strong>
+        <span>Possibilité de diffusion</span>
+    </div>
+
+    <div class="stat">
+        <strong>100%</strong>
+        <span>Campagnes personnalisées</span>
+    </div>
+
+    <div class="stat">
+        <strong>1</strong>
+        <span>Plateforme pour gérer vos campagnes</span>
+    </div>
+
+    <div class="stat">
+        <strong>∞</strong>
+        <span>Possibilités de ciblage</span>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     RADIOS / SERVICES
+========================= -->
+
+<section id="radios" class="services">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="label">
+            Votre campagne
+        </div>
+
+        <h2>
+            Une publicité adaptée à votre entreprise
+        </h2>
+
+        <p>
+            Vous gardez le contrôle de votre campagne,
+            de la sélection des radios jusqu'au suivi des diffusions.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <div class="service">
+
+            <div class="service-icon">📻</div>
+
+            <h3>
+                Choisissez vos radios
+            </h3>
+
+            <p>
+                Sélectionnez les radios ou points de diffusion
+                qui correspondent aux zones où vous souhaitez
+                toucher vos clients.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">📍</div>
+
+            <h3>
+                Ciblez vos zones
+            </h3>
+
+            <p>
+                Concentrez votre campagne sur les quartiers,
+                rues ou zones commerciales les plus intéressantes
+                pour votre activité.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🎙️</div>
+
+            <h3>
+                Votre spot publicitaire
+            </h3>
+
+            <p>
+                Vous possédez déjà votre spot ?
+                Téléversez-le. Vous n'en avez pas ?
+                Demandez-nous de le créer pour vous.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">📅</div>
+
+            <h3>
+                Choisissez la durée
+            </h3>
+
+            <p>
+                Déterminez la période pendant laquelle
+                votre publicité sera diffusée.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">🔊</div>
+
+            <h3>
+                Définissez la fréquence
+            </h3>
+
+            <p>
+                Choisissez le nombre de diffusions souhaité
+                selon votre budget et vos objectifs.
+            </p>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-icon">📊</div>
+
+            <h3>
+                Suivez vos résultats
+            </h3>
+
+            <p>
+                Depuis votre espace annonceur, retrouvez
+                les informations essentielles concernant
+                votre campagne.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     COMMENT ÇA MARCHE
+========================= -->
+
+<section id="fonctionnement" class="how">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="label">
+            Simple et rapide
+        </div>
+
+        <h2>
+            Votre campagne en 4 étapes
+        </h2>
+
+        <p>
+            Pas besoin de passer par plusieurs intermédiaires.
+            Configurez votre campagne directement depuis la plateforme.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>
+                Choisissez vos radios
+            </h3>
+
+            <p>
+                Sélectionnez les radios et les zones
+                où votre publicité doit être diffusée.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>
+                Ajoutez votre spot
+            </h3>
+
+            <p>
+                Importez votre publicité ou demandez
+                à notre équipe de créer votre spot.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>
+                Configurez et payez
+            </h3>
+
+            <p>
+                Définissez la durée et la fréquence,
+                vérifiez le prix puis effectuez le paiement.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">4</div>
+
+            <h3>
+                Suivez votre campagne
+            </h3>
+
+            <p>
+                Retrouvez votre campagne et ses informations
+                depuis votre espace annonceur.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     POURQUOI
+========================= -->
+
+<section>
+
+<div class="container why-grid">
+
+    <div>
+
+        <div class="section-head"
+             style="text-align:left;margin:0 0 30px 0;">
+
+            <div class="label">
+                Pourquoi nous ?
+            </div>
+
+            <h2>
+                La publicité qui accompagne vos clients dans leur quotidien.
+            </h2>
+
+            <p>
+                Votre message est diffusé dans des lieux où les personnes
+                vivent, circulent, travaillent et consomment.
+            </p>
+
+        </div>
+
+
+        <div class="why-list">
+
+            <div class="why-item">
+
+                <div class="why-icon">✓</div>
+
+                <div>
+                    <h3>Visibilité locale</h3>
+
+                    <p>
+                        Faites connaître votre entreprise dans les zones
+                        qui comptent réellement pour votre activité.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="why-item">
+
+                <div class="why-icon">✓</div>
+
+                <div>
+                    <h3>Budget maîtrisé</h3>
+
+                    <p>
+                        Vous choisissez le nombre de radios,
+                        la durée et la fréquence de votre campagne.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="why-item">
+
+                <div class="why-icon">✓</div>
+
+                <div>
+                    <h3>Gestion en ligne</h3>
+
+                    <p>
+                        Votre espace annonceur centralise vos campagnes,
+                        vos spots et vos informations de diffusion.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="visual-box">
+
+        <div class="broadcast">
+
+            <div class="broadcast-top">
+
+                <div class="broadcast-name">
+                    Campagne publicitaire
+                </div>
+
+                <div class="status">
+                    EN DIFFUSION
+                </div>
+
+            </div>
+
+            <p style="font-size:13px;color:#66736c;margin-bottom:12px;">
+                Réseau sélectionné
+            </p>
+
+            <div class="progress">
+                <span></span>
+            </div>
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                margin-top:9px;
+                font-size:12px;
+                color:#66736c;
+            ">
+                <span>Progression</span>
+                <strong>68%</strong>
+            </div>
+
+        </div>
+
+
+        <div class="broadcast">
+
+            <div class="broadcast-top">
+
+                <div class="broadcast-name">
+                    📻 Radios sélectionnées
+                </div>
+
+            </div>
+
+            <p style="font-size:13px;color:#66736c;">
+                Plusieurs points de diffusion peuvent être
+                sélectionnés pour une même campagne.
+            </p>
+
+        </div>
+
+
+        <div class="broadcast">
+
+            <div class="broadcast-top">
+
+                <div class="broadcast-name">
+                    📊 Suivi de campagne
+                </div>
+
+            </div>
+
+            <p style="font-size:13px;color:#66736c;">
+                Consultez les informations de votre campagne
+                depuis votre espace annonceur.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CTA CAMPAGNE
+========================= -->
+
+<section class="campaign">
+
+<div class="container">
+
+    <div class="campaign-box">
+
+        <div>
+
+            <h2>
+                Prêt à faire entendre votre entreprise ?
+            </h2>
+
+            <p>
+                Créez votre première campagne, choisissez vos radios
+                et commencez à développer votre visibilité locale.
+            </p>
+
+        </div>
+
+        <a href="creer-campagne.html"
+           class="btn btn-yellow">
+            Créer ma campagne →
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CTA FINAL
+========================= -->
+
+<section id="contact" class="final-cta">
+
+<div class="container">
+
+    <h2>
+        Une question avant de commencer ?
+    </h2>
+
+    <p>
+        Notre équipe peut vous accompagner dans la préparation
+        de votre campagne publicitaire.
+    </p>
+
+    <a href="contact.html"
+       class="btn btn-primary">
+        Nous contacter
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="container">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="footer-logo">
+                Radio<span>Pub</span>
+            </div>
+
+            <p class="footer-description">
+                Une plateforme de publicité locale permettant
+                aux entreprises de diffuser leurs messages
+                sur un réseau de radios installées dans les
+                espaces publics.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Plateforme</h4>
+
+            <a href="#radios">Nos radios</a>
+            <a href="#fonctionnement">Comment ça marche</a>
+            <a href="creer-campagne.html">Créer une campagne</a>
+            <a href="connexion.html">Se connecter</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Annonceurs</h4>
+
+            <a href="creer-campagne.html">Créer une campagne</a>
+            <a href="mes-campagnes.html">Mes campagnes</a>
+            <a href="tarifs.html">Tarifs</a>
+            <a href="aide.html">Centre d'aide</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Contact</h4>
+
+            <a href="contact.html">Nous contacter</a>
+            <a href="conditions.html">Conditions</a>
+            <a href="confidentialite.html">Confidentialité</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 RadioPub — Tous droits réservés.
+    </div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
