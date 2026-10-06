@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créer une campagne — RadioLaria</title>
+
+<style>
+:root {
+    --green: #0b6b57;
+    --dark-green: #064638;
+    --light-green: #e9f5f1;
+    --gold: #f4b942;
+    --dark: #17221f;
+    --gray: #66736f;
+    --light: #f6f8f7;
+    --white: #ffffff;
+    --border: #dfe7e3;
+    --danger: #d9534f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--green);
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.back-btn {
+    text-decoration: none;
+    color: var(--green);
+    font-weight: 700;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    margin-bottom: 30px;
+}
+
+.page-title h1 {
+    margin: 0 0 8px;
+    font-size: 34px;
+}
+
+.page-title p {
+    margin: 0;
+    color: var(--gray);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.campaign-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 25px;
+}
+
+.card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.section-description {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--green);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* =========================
+   RADIO CARDS
+========================= */
+
+.radio-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.radio-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+}
+
+.radio-card:hover {
+    border-color: var(--green);
+}
+
+.radio-card.selected {
+    border-color: var(--green);
+    background: var(--light-green);
+}
+
+.radio-card input {
+    position: absolute;
+    width: auto;
+    right: 15px;
+    top: 15px;
+}
+
+.radio-name {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.radio-location {
+    color: var(--gray);
+    font-size: 13px;
+}
+
+.radio-price {
+    margin-top: 10px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+/* =========================
+   SPOT
+========================= */
+
+.spot-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.spot-option {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+}
+
+.spot-option.active {
+    border-color: var(--green);
+    background: var(--light-green);
+}
+
+.spot-option strong {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.spot-option small {
+    color: var(--gray);
+}
+
+.upload-area {
+    border: 2px dashed #bfd2cb;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 15px;
+    display: none;
+}
+
+.upload-area.show {
+    display: block;
+}
+
+.upload-area input {
+    border: none;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-card {
+    position: sticky;
+    top: 95px;
+}
+
+.summary-header {
+    background: var(--green);
+    color: white;
+    margin: -25px -25px 20px;
+    padding: 20px 25px;
+    border-radius: 18px 18px 0 0;
+}
+
+.summary-header h2 {
+    margin: 0;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.summary-line span:last-child {
+    font-weight: 700;
+    text-align: right;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.total strong {
+    color: var(--green);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 11px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--dark-green);
+}
+
+.btn-gold {
+    background: var(--gold);
+    color: #222;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice {
+    background: #fff8df;
+    border-left: 4px solid var(--gold);
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-message {
+    display: none;
+    background: var(--light-green);
+    border: 1px solid #b9d8cd;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.success-message.show {
+    display: block;
+}
+
+.campaign-number {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    .campaign-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        position: static;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .grid-2,
+    .radio-list,
+    .spot-options {
+        grid-template-columns: 1fr;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .summary-header {
+        margin: -18px -18px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            Radio<span>Laria</span>
+        </div>
+
+        <a href="index.html" class="back-btn">
+            ← Retour à l'accueil
+        </a>
+
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+        <h1>Créer votre campagne publicitaire</h1>
+
+        <p>
+            Sélectionnez vos radios, définissez votre campagne
+            et obtenez une estimation immédiate.
+        </p>
+    </div>
+
+
+    <div class="campaign-layout">
+
+        <!-- =========================
+             FORMULAIRE
+        ========================== -->
+
+        <div>
+
+            <!-- INFORMATIONS -->
+
+            <div class="card">
+
+                <h2>1. Informations sur votre campagne</h2>
+
+                <p class="section-description">
+                    Donnez un nom à votre campagne afin de pouvoir
+                    facilement la retrouver.
+                </p>
+
+                <div class="form-group">
+
+                    <label>Nom de la campagne</label>
+
+                    <input
+                        type="text"
+                        id="campaignName"
+                        placeholder="Ex. Promotion anniversaire de mon entreprise"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- RADIOS -->
+
+            <div class="card">
+
+                <h2>2. Choisissez vos radios</h2>
+
+                <p class="section-description">
+                    Sélectionnez les radios sur lesquelles vous souhaitez
+                    diffuser votre publicité.
+                </p>
+
+                <div class="radio-list">
+
+                    <label class="radio-card">
+
+                        <input
+                            type="checkbox"
+                            value="1500"
+                            data-name="Radio Centre-Ville"
+                            onchange="updateCampaign()"
+                        >
+
+                        <div class="radio-name">
+                            Radio Centre-Ville
+                        </div>
+
+                        <div class="radio-location">
+                            Port-au-Prince
+                        </div>
+
+                        <div class="radio-price">
+                            1 500 HTG / jour
+                        </div>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="checkbox"
+                            value="1200"
+                            data-name="Radio Carrefour"
+                            onchange="updateCampaign()"
+                        >
+
+                        <div class="radio-name">
+                            Radio Carrefour
+                        </div>
+
+                        <div class="radio-location">
+                            Carrefour
+                        </div>
+
+                        <div class="radio-price">
+                            1 200 HTG / jour
+                        </div>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="checkbox"
+                            value="1800"
+                            data-name="Radio Pétion-Ville"
+                            onchange="updateCampaign()"
+                        >
+
+                        <div class="radio-name">
+                            Radio Pétion-Ville
+                        </div>
+
+                        <div class="radio-location">
+                            Pétion-Ville
+                        </div>
+
+                        <div class="radio-price">
+                            1 800 HTG / jour
+                        </div>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="checkbox"
+                            value="1000"
+                            data-name="Radio Delmas"
+                            onchange="updateCampaign()"
+                        >
+
+                        <div class="radio-name">
+                            Radio Delmas
+                        </div>
+
+                        <div class="radio-location">
+                            Delmas
+                        </div>
+
+                        <div class="radio-price">
+                            1 000 HTG / jour
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- DUREE -->
+
+            <div class="card">
+
+                <h2>3. Définissez la durée</h2>
+
+                <div class="grid-2">
+
+                    <div class="form-group">
+
+                        <label>Date de début</label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                            onchange="updateCampaign()"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Durée</label>
+
+                        <select
+                            id="duration"
+                            onchange="updateCampaign()"
+                        >
+
+                            <option value="1">1 jour</option>
+                            <option value="3">3 jours</option>
+                            <option value="7" selected>7 jours</option>
+                            <option value="14">14 jours</option>
+                            <option value="30">30 jours</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Nombre de diffusions par jour
+                    </label>
+
+                    <select
+                        id="frequency"
+                        onchange="updateCampaign()"
+                    >
+
+                        <option value="3">3 diffusions / jour</option>
+                        <option value="5" selected>5 diffusions / jour</option>
+                        <option value="10">10 diffusions / jour</option>
+                        <option value="15">15 diffusions / jour</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- SPOT -->
+
+            <div class="card">
+
+                <h2>4. Votre spot publicitaire</h2>
+
+                <p class="section-description">
+                    Vous pouvez fournir votre propre spot ou demander
+                    à notre équipe de le créer.
+                </p>
+
+                <div class="spot-options">
+
+                    <div
+                        class="spot-option active"
+                        id="uploadOption"
+                        onclick="selectSpot('upload')"
+                    >
+
+                        <strong>🎵 J'ai déjà mon spot</strong>
+
+                        <small>
+                            Envoyez votre fichier audio.
+                        </small>
+
+                    </div>
+
+
+                    <div
+                        class="spot-option"
+                        id="creationOption"
+                        onclick="selectSpot('creation')"
+                    >
+
+                        <strong>🎙️ Créer mon spot</strong>
+
+                        <small>
+                            Demandez à notre équipe de créer votre publicité.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="upload-area show"
+                    id="uploadArea"
+                >
+
+                    <strong>
+                        Déposez votre fichier audio
+                    </strong>
+
+                    <p>
+                        MP3, WAV ou M4A
+                    </p>
+
+                    <input
+                        type="file"
+                        accept=".mp3,.wav,.m4a,audio/*"
+                    >
+
+                </div>
+
+
+                <div
+                    class="upload-area"
+                    id="creationArea"
+                >
+
+                    <div class="form-group">
+
+                        <label>
+                            Décrivez votre publicité
+                        </label>
+
+                        <textarea
+                            id="spotDescription"
+                            placeholder="Ex. Je veux annoncer une promotion de 20% sur tous mes produits..."
+                        ></textarea>
+
+                    </div>
+
+                    <div class="notice">
+
+                        Notre équipe pourra vous contacter afin de définir
+                        le texte, la voix et la musique du spot.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CIBLAGE -->
+
+            <div class="card">
+
+                <h2>5. Zone de diffusion</h2>
+
+                <div class="form-group">
+
+                    <label>Zone ciblée</label>
+
+                    <select>
+
+                        <option>Port-au-Prince</option>
+                        <option>Delmas</option>
+                        <option>Pétion-Ville</option>
+                        <option>Carrefour</option>
+                        <option>Tout le département de l'Ouest</option>
+                        <option>Tout Haïti</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRMATION -->
+
+            <div class="card">
+
+                <h2>6. Validation</h2>
+
+                <p class="section-description">
+
+                    Vérifiez les informations de votre campagne avant
+                    de passer au paiement.
+
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="submitCampaign()"
+                >
+
+                    Continuer vers le paiement →
+
+                </button>
+
+
+                <div
+                    class="success-message"
+                    id="successMessage"
+                >
+
+                    <strong>Campagne créée !</strong>
+
+                    <p>
+                        Votre demande a été enregistrée.
+                    </p>
+
+                    <div class="campaign-number">
+                        #RP-2026-001
+                    </div>
+
+                    <p>
+                        Ceci est une simulation pour le prototype.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RESUME
+        ========================== -->
+
+        <aside>
+
+            <div class="card summary-card">
+
+                <div class="summary-header">
+
+                    <h2>Résumé</h2>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Radios</span>
+
+                    <span id="summaryRadios">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Durée</span>
+
+                    <span id="summaryDuration">
+                        7 jours
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Diffusions/jour</span>
+
+                    <span id="summaryFrequency">
+                        5
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Total diffusions</span>
+
+                    <span id="summaryBroadcasts">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Coût des radios</span>
+
+                    <span id="summaryRadioCost">
+                        0 HTG
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Production du spot</span>
+
+                    <span id="summarySpot">
+                        0 HTG
+                    </span>
+
+                </div>
+
+
+                <div class="total">
+
+                    <span>Total estimé</span>
+
+                    <strong id="totalPrice">
+                        0 HTG
+                    </strong>
+
+                </div>
+
+
+                <div class="notice">
+
+                    💡 Le prix affiché est une estimation.
+                    Le montant final pourra être confirmé avant paiement.
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+const SPOT_CREATION_PRICE = 2500;
+
+
+/* ==========================================
+   DATE MINIMUM
+========================================== */
+
+const startDate = document.getElementById("startDate");
+
+const today = new Date();
+
+const year = today.getFullYear();
+
+const month = String(today.getMonth() + 1).padStart(2, "0");
+
+const day = String(today.getDate()).padStart(2, "0");
+
+startDate.min = `${year}-${month}-${day}`;
+
+startDate.value = `${year}-${month}-${day}`;
+
+
+/* ==========================================
+   RADIO SELECTION
+========================================== */
+
+document.querySelectorAll(".radio-card").forEach(card => {
+
+    const checkbox = card.querySelector("input");
+
+    checkbox.addEventListener("change", function () {
+
+        card.classList.toggle(
+            "selected",
+            this.checked
+        );
+
+    });
+
+});
+
+
+/* ==========================================
+   SPOT
+========================================== */
+
+function selectSpot(type) {
+
+    const uploadOption =
+        document.getElementById("uploadOption");
+
+    const creationOption =
+        document.getElementById("creationOption");
+
+    const uploadArea =
+        document.getElementById("uploadArea");
+
+    const creationArea =
+        document.getElementById("creationArea");
+
+
+    if (type === "upload") {
+
+        uploadOption.classList.add("active");
+
+        creationOption.classList.remove("active");
+
+        uploadArea.classList.add("show");
+
+        creationArea.classList.remove("show");
+
+    } else {
+
+        creationOption.classList.add("active");
+
+        uploadOption.classList.remove("active");
+
+        creationArea.classList.add("show");
+
+        uploadArea.classList.remove("show");
+
+    }
+
+    updateCampaign();
+
+}
+
+
+/* ==========================================
+   UPDATE CAMPAIGN
+========================================== */
+
+function updateCampaign() {
+
+    const radios =
+        document.querySelectorAll(
+            ".radio-card input:checked"
+        );
+
+    const duration =
+        Number(
+            document.getElementById("duration").value
+        );
+
+    const frequency =
+        Number(
+            document.getElementById("frequency").value
+        );
+
+
+    let dailyRadioCost = 0;
+
+
+    radios.forEach(radio => {
+
+        dailyRadioCost += Number(radio.value);
+
+    });
+
+
+    const radioCost =
+        dailyRadioCost * duration;
+
+
+    const totalBroadcasts =
+        radios.length * duration * frequency;
+
+
+    const creationActive =
+        document
+        .getElementById("creationOption")
+        .classList
+        .contains("active");
+
+
+    const spotCost =
+        creationActive
+            ? SPOT_CREATION_PRICE
+            : 0;
+
+
+    const total =
+        radioCost + spotCost;
+
+
+    document.getElementById(
+        "summaryRadios"
+    ).textContent = radios.length;
+
+
+    document.getElementById(
+        "summaryDuration"
+    ).textContent =
+        duration + (duration > 1 ? " jours" : " jour");
+
+
+    document.getElementById(
+        "summaryFrequency"
+    ).textContent =
+        frequency;
+
+
+    document.getElementById(
+        "summaryBroadcasts"
+    ).textContent =
+        totalBroadcasts;
+
+
+    document.getElementById(
+        "summaryRadioCost"
+    ).textContent =
+        formatMoney(radioCost);
+
+
+    document.getElementById(
+        "summarySpot"
+    ).textContent =
+        formatMoney(spotCost);
+
+
+    document.getElementById(
+        "totalPrice"
+    ).textContent =
+        formatMoney(total);
+
+}
+
+
+/* ==========================================
+   MONEY
+========================================== */
+
+function formatMoney(value) {
+
+    return value.toLocaleString(
+        "fr-FR"
+    ) + " HTG";
+
+}
+
+
+/* ==========================================
+   SUBMIT
+========================================== */
+
+function submitCampaign() {
+
+    const campaignName =
+        document.getElementById(
+            "campaignName"
+        ).value.trim();
+
+
+    const radios =
+        document.querySelectorAll(
+            ".radio-card input:checked"
+        );
+
+
+    if (!campaignName) {
+
+        alert(
+            "Veuillez donner un nom à votre campagne."
+        );
+
+        document.getElementById(
+            "campaignName"
+        ).focus();
+
+        return;
+
+    }
+
+
+    if (radios.length === 0) {
+
+        alert(
+            "Veuillez sélectionner au moins une radio."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "successMessage"
+    ).classList.add("show");
+
+
+    document.getElementById(
+        "successMessage"
+    ).scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
